@@ -18,38 +18,44 @@
 
 // ------------------------------------------------------
 
-const _draw = Symbol();
+// const pinKey = Symbol('pin');
+
+// class BankAccount {
+//     constructor(owner, balance) {
+//         this.owner = owner;
+//         this.balance = balance
+//         this[pinKey] = 1234;
+//     }
+// }
+
+// const x = new BankAccount('Mark', 10.343);
+
+// function checkPin(account, inputPin) {
+//     if (account[pinKey] === inputPin) console.log('Access granted.');
+//     else console.log('Wrong PIN.');
+// }
+
+// ------------------------------------------------------
+
+const _radius = new WeakMap();
+const _move = new WeakMap();
 
 class Circle {
     constructor(radius) {
-        this.radius = radius;
+        _radius.set(this, radius);
+        _move.set(this, () => {
+            console.log('move', this);
+        });
     }
-    [_draw]() {
-        console.log('test');
+    draw() {
+        _move.get(this)();
+
+        console.log('draw');
     }
 }
 
-const c = new Circle(1);
+const c = new Circle(10);
 
 console.log(c);
 
-
-const pinKey = Symbol('pin');
-
-class BankAccount {
-    constructor(owner, balance) {
-        this.owner = owner;
-        this.balance = balance
-        this[pinKey] = 1234;
-    }
-}
-
-const x = new BankAccount('Mark', 10.343);
-
-function checkPin(account, inputPin) {
-    if (account[pinKey] === inputPin) console.log('Access granted.');
-    else console.log('Wrong PIN.');
-}
-
-checkPin(x, 11234);
-checkPin(x, 1234);
+c.draw();

@@ -84,46 +84,39 @@
 
 // ------------------------------------------------------
 
-// class Animal {
-//     constructor(name) {
-//         this.name = name
+// class Shape {
+//     constructor(color) {
+//         this.color = color;
 //     }
-//     speak() {
-//         console.log("Animal makes a sound");
-//     }
-// }
-
-// class Dog extends Animal {
-
-//     bark() {
-//         console.log("Dog barks");
+//     move() {
+//         console.log('move');
 //     }
 // }
 
-// const d = new Dog('Bobby');
-// d.speak(); // Nasleđeno iz Animal 
-// d.bark();  // Definisano u Dog 
-// console.log(d);
+// class Circle extends Shape {
+//     constructor(color, radius) {
+//         super(color);
+//         this.radius = radius;
+//     }
+//     draw() {
+//         console.log('draw');
+//     }
+// }
+
+// const c = new Circle('red', 1);
 
 // ------------------------------------------------------
 
 class Shape {
-    constructor(color) {
-        this.color = color;
-    }
     move() {
         console.log('move');
     }
 }
 
 class Circle extends Shape {
-    constructor(color, radius) {
-        super(color);
-        this.radius = radius;
-    }
-    draw() {
-        console.log('draw');
+    move() {
+        console.log('circle move');
     }
 }
 
-const c = new Circle('red', 1);
+const c = new Circle();

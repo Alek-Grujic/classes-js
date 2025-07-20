@@ -59,3 +59,28 @@ const c = new Circle(10);
 console.log(c);
 
 c.draw();
+
+// ------------------------------------------------------
+
+const _secretCode = new WeakMap();
+
+class Device {
+    constructor(name, secretCode) {
+        this.name = name;
+        _secretCode.set(this, secretCode)
+    }
+    revealCode() {
+        return _secretCode.get(this);
+    }
+}
+
+const d = new Device('TV', 9988);
+
+console.log(d);
+
+console.log(d.secretCode);
+
+console.log(d.revealCode());
+
+
+

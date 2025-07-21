@@ -154,11 +154,18 @@ const q = new Queue();
 
 q.enqueue('a');
 q.enqueue('b');
-q.enqueue('c');
 
-console.log(q.dequeue()); // dequeue 'a'
-console.log(q.dequeue())  // dequeue 'b'
-console.log(q.peek());
+try {
+    console.log(q.dequeue());
+} catch (e) {
+    console.error(e.message);
+}
+try {
+    console.log(q.peek());
+} catch (e) {
+    console.error(e.message);
+}
+
 console.log(q.count);
 
 

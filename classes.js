@@ -127,23 +127,26 @@
 
 // -----
 
+const _items = new WeakMap();
+
 class Queue {
     constructor() {
-        this.array = [];
+        _items.set(this, []);
     }
     enqueue(item) {
-        this.array.push(item);
+        const items = _items.get(this);
+        items.push(item);
     }
     dequeue() {
-        if (this.array.length <= 0) throw new Error('Array is empty!');
-        return `This element is out: ${this.array.splice(0, 1)[0]}`;
+        if (_items.get(this).length <= 0) throw new Error('Queue is empty!');
+        return `This element is out: ${_items.get(this).splice(0, 1)[0]}`;
     }
     peek() {
-        if (this.array.length <= 0) throw new Error('Array is empty!');
-        return `This is first element: ${this.array[0]}`;
+        if (_items.get(this).length <= 0) throw new Error('Queue is empty!');
+        return `This is first element: ${_items.get(this)[0]}`;
     }
     size() {
-        return `Number of elements: ${this.array.length}`;
+        return `Number of elements: ${_items.get(this).length}`;
     }
 }
 

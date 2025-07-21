@@ -138,15 +138,15 @@ class Queue {
         items.push(item);
     }
     dequeue() {
-        if (_items.get(this).length <= 0) throw new Error('Queue is empty!');
+        if (_items.get(this).length === 0) throw new Error('Queue is empty!');
         return `This element is out: ${_items.get(this).splice(0, 1)[0]}`;
     }
     peek() {
-        if (_items.get(this).length <= 0) throw new Error('Queue is empty!');
+        if (_items.get(this).length === 0) throw new Error('Queue is empty!');
         return `This is first element: ${_items.get(this)[0]}`;
     }
-    size() {
-        return `Number of elements: ${_items.get(this).length}`;
+    get count() {
+        return _items.get(this).length;
     }
 }
 
@@ -159,6 +159,7 @@ q.enqueue('c');
 console.log(q.dequeue()); // dequeue 'a'
 console.log(q.dequeue())  // dequeue 'b'
 console.log(q.peek());
-console.log(q.size());
+console.log(q.count);
 
 
+console.log(q);

@@ -141,7 +141,11 @@ class Queue {
     };
     peek() {
         if (this.array.length <= 0) throw new Error('Array is empty!');
-        return this.array[0];
+        return `This is first element: ${this.array[0]}`;
+    };
+    size() {
+        if (this.array.length <= 0) throw new Error('Array is empty!');
+        return `Number of elements: ${this.array.length}`;
     }
 }
 
@@ -149,18 +153,11 @@ const q = new Queue();
 
 q.enqueue('a');
 q.enqueue('b');
-console.log(q);
+q.enqueue('c');
 
 console.log(q.dequeue());
+console.log(q.dequeue());
 console.log(q.peek());
-// console.log(q.size());
-// console.log(q.isEmpty()); 
-
-
-
-
-
-
-
+console.log(q.size());
 
 

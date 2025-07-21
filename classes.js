@@ -133,18 +133,16 @@ class Queue {
     }
     enqueue(item) {
         this.array.push(item);
-    };
+    }
     dequeue() {
         if (this.array.length <= 0) throw new Error('Array is empty!');
-        const out = this.array.splice(0, 1);
-        return out.join('');
-    };
+        return `This element is out: ${this.array.splice(0, 1)[0]}`;
+    }
     peek() {
         if (this.array.length <= 0) throw new Error('Array is empty!');
         return `This is first element: ${this.array[0]}`;
-    };
+    }
     size() {
-        if (this.array.length <= 0) throw new Error('Array is empty!');
         return `Number of elements: ${this.array.length}`;
     }
 }
@@ -155,8 +153,8 @@ q.enqueue('a');
 q.enqueue('b');
 q.enqueue('c');
 
-console.log(q.dequeue());
-console.log(q.dequeue());
+console.log(q.dequeue()); // dequeue 'a'
+console.log(q.dequeue())  // dequeue 'b'
 console.log(q.peek());
 console.log(q.size());
 

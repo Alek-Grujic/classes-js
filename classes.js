@@ -107,16 +107,60 @@
 
 // ------------------------------------------------------
 
-class Shape {
-    move() {
-        console.log('move');
+// class Shape {
+//     move() {
+//         console.log('move');
+//     }
+// }
+
+// class Circle extends Shape {
+//     move() {
+//         console.log('circle move');
+//     }
+// }
+
+// const c = new Circle();
+
+// ------------------------------------------------------
+
+// FINAL EXERCISES IN ES6 CLASSES SECTION
+
+// -----
+
+class Queue {
+    constructor() {
+        this.array = [];
+    }
+    enqueue(item) {
+        this.array.push(item);
+    };
+    dequeue() {
+        if (this.array.length <= 0) throw new Error('Array is empty!');
+        const out = this.array.splice(0, 1);
+        return out.join('');
+    };
+    peek() {
+        if (this.array.length <= 0) throw new Error('Array is empty!');
+        return this.array[0];
     }
 }
 
-class Circle extends Shape {
-    move() {
-        console.log('circle move');
-    }
-}
+const q = new Queue();
 
-const c = new Circle();
+q.enqueue('a');
+q.enqueue('b');
+console.log(q);
+
+console.log(q.dequeue());
+console.log(q.peek());
+// console.log(q.size());
+// console.log(q.isEmpty()); 
+
+
+
+
+
+
+
+
+

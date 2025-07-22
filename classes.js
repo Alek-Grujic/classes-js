@@ -127,46 +127,89 @@
 
 // -----
 
-const _items = new WeakMap();
+// const _items = new WeakMap();
 
-class Queue {
+// class Queue {
+//     constructor() {
+//         _items.set(this, []);
+//     }
+//     enqueue(item) {
+//         const items = _items.get(this);
+//         items.push(item);
+//     }
+//     dequeue() {
+//         if (_items.get(this).length === 0) throw new Error('Queue is empty!');
+//         return `This element is out: ${_items.get(this).splice(0, 1)[0]}`;
+//     }
+//     peek() {
+//         if (_items.get(this).length === 0) throw new Error('Queue is empty!');
+//         return `This is first element: ${_items.get(this)[0]}`;
+//     }
+//     get count() {
+//         return _items.get(this).length;
+//     }
+// }
+
+// const q = new Queue();
+
+// q.enqueue('a');
+// q.enqueue('b');
+
+// try {
+//     console.log(q.dequeue());
+// } catch (e) {
+//     console.error(e.message);
+// }
+// try {
+//     console.log(q.peek());
+// } catch (e) {
+//     console.error(e.message);
+// }
+
+// console.log(q.count);
+
+
+// console.log(q);
+
+// ------------------------------------------------------
+
+const _array = new WeakMap();
+
+class Stack {
     constructor() {
-        _items.set(this, []);
+        _array.set(this, []);
     }
-    enqueue(item) {
-        const items = _items.get(this);
-        items.push(item);
-    }
-    dequeue() {
-        if (_items.get(this).length === 0) throw new Error('Queue is empty!');
-        return `This element is out: ${_items.get(this).splice(0, 1)[0]}`;
+    push(item) {
+        const array = _array.get(this);
+        array.push(item);
     }
     peek() {
-        if (_items.get(this).length === 0) throw new Error('Queue is empty!');
-        return `This is first element: ${_items.get(this)[0]}`;
+        const array = _array.get(this);
+        if (array.length === 0) throw new Error('Stack is empty!');
+        const last = array.pop();
+        array.push(last);
+        return last;
+    }
+    pop() {
+        const array = _array.get(this);
+        if (array.length === 0) throw new Error('Stack is empty!');
+        const last = array.pop();
+        return last;
     }
     get count() {
-        return _items.get(this).length;
+        const array = _array.get(this);
+        return array.length;
     }
 }
 
-const q = new Queue();
+const a = new Stack();
 
-q.enqueue('a');
-q.enqueue('b');
+a.push('a');
+a.push('b');
+a.push('c');
 
-try {
-    console.log(q.dequeue());
-} catch (e) {
-    console.error(e.message);
-}
-try {
-    console.log(q.peek());
-} catch (e) {
-    console.error(e.message);
-}
+console.log(a.pop());
 
-console.log(q.count);
+console.log(a.peek());
 
-
-console.log(q);
+console.log(a.count);

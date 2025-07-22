@@ -180,25 +180,20 @@ class Stack {
         _array.set(this, []);
     }
     push(item) {
-        const array = _array.get(this);
-        array.push(item);
+        _array.get(this).push(item);
     }
     peek() {
-        const array = _array.get(this);
-        if (array.length === 0) throw new Error('Stack is empty!');
-        const last = array.pop();
-        array.push(last);
-        return last;
+        const items = _array.get(this);
+        if (items.length === 0) throw new Error('Stack is empty!');
+        return items[items.length - 1];
     }
     pop() {
-        const array = _array.get(this);
-        if (array.length === 0) throw new Error('Stack is empty!');
-        const last = array.pop();
-        return last;
+        const items = _array.get(this);
+        if (items.length === 0) throw new Error('Stack is empty!');
+        return items.pop();
     }
     get count() {
-        const array = _array.get(this);
-        return array.length;
+        return _array.get(this).length;
     }
 }
 
